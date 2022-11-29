@@ -22,6 +22,8 @@ import { PuntoVentaComponent } from './Ventas/punto-venta/punto-venta.component'
 import { PuestosComponent } from './catalogos/puestos/puestos.component';
 import { DetalleventasComponent } from './Ventas/detalleventas/detalleventas.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     PuestosComponent,
     DetalleventasComponent,
   ],
-  imports: [BrowserModule, APP_ROUTING, HttpClientModule],
+  imports: [
+    BrowserModule,
+    APP_ROUTING,
+    HttpClientModule,
+    NgbModule,
+    FormsModule,
+  ],
   providers: [ClientesService, EmpleadosService],
   bootstrap: [AppComponent],
 })

@@ -9,128 +9,19 @@
 
         </div>
         <!--Inicia buscador-->
-        <div class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search"
-            (keyup.enter)="buscarCliente(buscarTexto.value)" #buscarTexto>
-          <button (click)="buscarCliente(buscarTexto.value)" class="btn btn-outline-success my-2 my-sm-0" type="button">
-            Buscar
-          </button>
-        </div>
+
         <!--Termina buscador-->
       </div>
     </div>
   </section>
   <!--Boton para agregar Borrar ek url para que carge el icono -->
-  <div class="cajaf">
-    <a class="btn_roundf" title="Imprimir" alt="impirmir" data-toggle="modal" data-target=".bd-example-modal-lg"><i
-        class="fa fa-plus"></i></a>
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Agregar Cliente</button>
 
-  </div>
   <!--CBoton para agregar-->
   <!-- Modal -->
-  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg ">
-
-      <div class="card card-success">
-        <div class="card-header">
-          <h3 class="card-title">Agregar cliente</h3>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form role="form">
-          <div class="form-row">
-            <div class="form-group col-md-5">
-              <label class="mr" for="inputEmail4">Nombre</label>
-              <input type="text" class="form-control mr" id="inputEmail4" placeholder="Nombre(s)">
-            </div>
-            <div class="form-group col-md-5">
-              <label class="mr" for="inputPassword4">Apellido Paterno</label>
-              <input type="text" class="form-control mr" id="inputPassword4" placeholder="Apellido Paterno">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label class="mr" for="inputEmail4">Apellido Materno</label>
-              <input type="text" class="form-control mr" id="inputEmail4" placeholder="Apellido Materno">
-            </div>
-            <div class="form-group col-md-4">
-              <label class="mr" for="inputPassword4">Telefono</label>
-              <input type="text" class="form-control mr" id="inputPassword4" placeholder="Telefono">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-8">
-            </div>
-            <div class="col-md-3">
-              <button class="btn btn-primary btn-block">Guardar</button>
-              <br>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
 
 
-  <section class="content" *ngIf="modal">
-    <div class="card card-solid">
-      <div class="card-body pb-0">
-        <div class="row d-flex align-items-stretch">
-          <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch" *ngFor=" let c of clientes">
-            <div class="card bg-light">
-              <div class="card-header text-muted border-bottom-0">
-              </div>
-              <div class="card-body pt-0">
-                <div class="row">
-                  <div class="ribbon-wrapper">
-                    <div class="ribbon bg-{{c.Estatus}}">
 
-                    </div>
-                  </div>
-                  <div class="col-7">
-                    <h2 class="lead"><b>{{c.Nombre}} {{c.Apellido}}</b></h2>
-                    <ul class="ml-4 mb-0 fa-ul text-muted">
-                      <br>
-                      <li class="small"><span class="fa-li"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                        {{c.Telefono}}</li>
-                      <br>
-                      <li class="small"><span class="fa-li"><i class="fa fa-book" aria-hidden="true"></i></span>
-                        Suscripcion: {{c.Suscripcion}} </li>
-                      <br>
-                      <li class="small"><span class="fa-li"><i class="fa fa-hourglass-end"
-                            aria-hidden="true"></i></span> Fin Suscripcion: {{c.FinSus}} </li>
-                    </ul>
-                  </div>
-                  <div class="col-5 text-center">
-                    <img [src]="c.User" alt="" class="img-circle img-fluid">
-                  </div>
-                </div>
-                <div class="col-12 text-right">
-                  <a class="btn btn-info btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg1">
-                    <i class="fas fa-pencil-alt">
-                    </i>
-                    Editar
-                  </a>
-                </div>
-              </div>
-              <!--<div class="card-footer">
-                      <div class="text-right">
-                        <a href="#" class="btn btn-sm btn-primary">
-                          <i class="fas fa-pencil-alt"></i> Editar
-                        </a>
-                      </div>
-                    </div>-->
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- /.card-footer -->
-    </div>
-  </section>
 
 
   <div *ngIf="buscador">
@@ -195,7 +86,7 @@
 
 
             <td class="text-center">
-              <button type="button" class="btn btn-info btn-sm" onclick="openEditar()"><i
+              <button type="button" class="btn btn-info btn-sm" (click)="openUp(update, index)"><i
                   class="fas fa-pencil-alt"></i></button>
             </td>
             <td class="text-center">
@@ -209,4 +100,106 @@
       </table>
     </div>
   </div>
+
+  <!--Modal Agregar-->
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Agregar</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="Nombre">Nombre</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="nombre" name="nombre">
+              <small>{{nombre}}</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="ApellidoPaterno">Apellido Paterno</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="p_Apellido" name="Apellido_paterno">
+              <small>{{ p_Apellido }}</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="ApellidoMaterno">Apellido Materno</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="seg_Apellido"
+                name="Apellido_materno">
+              <small>{{ seg_Apellido }}</small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group">
+              <label for="CorreoElectronico">Telefono</label>
+              <input type="text" maxlength="500" class="form-control" [(ngModel)]="Telefono" name="Telefono">
+              <small>{{ Telefono }}</small>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="crearU()">Añadir</button>
+    </div>
+  </ng-template>
+
+  <!--Modal Editar-->
+  <ng-template #update let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Editar</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="Nombre">Nombre</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="nombre" name="nombre"
+                value="{{payment[index].nombre}}">
+              <small>{{nombre}}</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="ApellidoPaterno">Apellido Paterno</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="p_Apellido" name="Apellido_paterno"
+                value="{{payment[index].p_Paterno}}">
+              <small>{{ p_Apellido }}</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="ApellidoMaterno">Apellido Materno</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="seg_Apellido" name="Apellido_materno"
+                value="{{payment[index].seg_apellido}}">
+              <small>{{ seg_Apellido }}</small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group">
+              <label for="CorreoElectronico">Telefono</label>
+              <input type="text" maxlength="500" class="form-control" [(ngModel)]="Telefono" name="Telefono"
+                value="{{payment[index].telefono}}">
+              <small>{{ Telefono }}</small>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark"
+        (click)="updateU(payment[index].id, payment[index] )">Save</button>
+    </div>
+  </ng-template>
 </body>

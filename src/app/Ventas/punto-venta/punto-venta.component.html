@@ -4,7 +4,7 @@
             <div class="col-sm-6">
                 <h4 class="m-0">Punto de ventas</h4>
             </div>
-           <!-- <div class="col-sm-6">
+            <!-- <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li><a class="breadcrumb-item">Inicio</a></li>
                     <li><a class="breadcrumb-item active">Venta</a></li>
@@ -22,22 +22,7 @@
                 <div class="row">
 
                     <!--Input primer-->
-                    <div class="col-md-12 mb-3">
-                        <div class="form-group mb-2">
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Cliente</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                            <option selected>Seleccione un cliente</option>
-                              <option *ngFor="let c of clientes">{{c.Nombre}}</option>
-                            </select>
-                          </div>
-                          <label class="col-form-label">
-                                <i class="fas fa-barcode fs-6"></i>
-                                <span class="small">Producto</span>
-                          </label>
-                          <input class="form-control form-control-sm" type="text" name="" id="" placeholder="Ingrese el codigo de barras o el nombre del producto">
-                        </div>
-                    </div>
+
                 </div>
                 <!--Etiqueta total-->
                 <div class="col-md-6 mb-3">
@@ -51,29 +36,29 @@
                     <button class="btn btn-danger">
                         <i class="fas fa-trash-alt"></i>Vaciar Listado
                     </button>
-                    
+
                 </div>
                 <br>
                 <div class="col-md-12">
                     <table class="display nowrap table-striped w-100 shadow">
-                    <thead class="bg-info text-left fs-6">
-                        <th>Codigo barras</th>
-                        <th>Producto</th>
-                        <th>Cantidad</th>
-                        <th>Precio uni.</th>
-                        <th>Total</th>
-                    </thead>
-                    <tbody class="text-left fs-6">
-                        <tr>
-                            <th scope="row">000001</th>
-                            <td>Creatina Monohidratada 250gr</td>
-                            <td><input type="number" value="1" class="col-3"></td>
-                            <td>300.00</td>
-                            <td>300.00</td>
-                        </tr>
+                        <thead class="bg-info text-left fs-6">
+                            <th>Codigo barras</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio uni.</th>
+                            <th>Total</th>
+                        </thead>
+                        <tbody class="text-left fs-6">
+                            <tr>
+                                <th scope="row">000001</th>
+                                <td>Creatina Monohidratada 250gr</td>
+                                <td><input type="number" value="1" class="col-3"></td>
+                                <td>300.00</td>
+                                <td>300.00</td>
+                            </tr>
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
                 </div>
 
             </div>
@@ -88,51 +73,52 @@
                             <span class="small">Comprobante</span>
                         </label>
 
-                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                        <option value="">Seleccione comprobante</option>
-                        <option value="" selected="true">Ninguno</option>
-                        <option value="">Ticket</option>
-                    </select>
-                    <span class="text-danger small fist-italic" style="display:none">
-                    Debe seleccionar comprobante
-                    </span>
-                    <div class="form-group mb-2">
-                        <label class="col-form-label" for="">
-                            <I class="fas fa-money-bill-alt fs-6"></I>
-                            <span class="small">Pago:</span>
-                        </label><br>
-                        <label for="exampleFormControlSelect1">Efectivo</label>
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            <option value="">Seleccione comprobante</option>
+                            <option value="" selected="true">Ninguno</option>
+                            <option value="">Ticket</option>
+                        </select>
+                        <span class="text-danger small fist-italic" style="display:none">
+                            Debe seleccionar comprobante
+                        </span>
+                        <div class="form-group mb-2">
+                            <label class="col-form-label" for="">
+                                <I class="fas fa-money-bill-alt fs-6"></I>
+                                <span class="small">Pago:</span>
+                            </label><br>
+                            <label for="exampleFormControlSelect1">Efectivo</label>
 
-                        <!--<select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            <!--<select class="form-select form-select-sm" aria-label=".form-select-sm example">
                             <option value="">Seleccione tipo de pago</option>
                             <option value="" selected="true">Efectivo</option>
                             <option value="">Tarjeta</option>
                         </select>-->
-                        <span class="text-danger small fist-italic" style="display:none">
-                            Debe seleccionar tipo de pago
+                            <span class="text-danger small fist-italic" style="display:none">
+                                Debe seleccionar tipo de pago
                             </span>
-                    </div>
+                        </div>
 
-                    <!--<div class="form-group">
+                        <!--<div class="form-group">
                         <div class="col-md-6">
                             <label>Folio</label>
                             <input type="text" class="form-control form-control-sm" placeholder="Numero Serie" disabled> 
                         </div>
                     </div>-->
-                    <div class="form-group">
-                        <label>Efectivo recibido</label>
-                        <input type="number" min="0" name="iptEfectivo" id="iptEfectivoRecibido" class="form-control form-control0-sm">
-                    </div>
-                    <!--<div class="form-check">
+                        <div class="form-group">
+                            <label>Efectivo recibido</label>
+                            <input type="number" min="0" name="iptEfectivo" id="iptEfectivoRecibido"
+                                class="form-control form-control0-sm">
+                        </div>
+                        <!--<div class="form-check">
                         <input class="form-check-input" type="checkbox" id="chkEfectivoExacto">
                         <label for="chkEfectivoExacto" class="form-check-label">Efectivo exacto</label>
                     </div>-->
-                    <div class="col-12">
-                        <label class="text-star fw-bold">Total: $ <span>0.00</span></label>
-                    </div>
-                    <div class="col-12">
-                        <label class="text-star text-danger fw-bold">Cambio: $ <span>0.00</span></label>
-                    </div>
+                        <div class="col-12">
+                            <label class="text-star fw-bold">Total: $ <span>0.00</span></label>
+                        </div>
+                        <div class="col-12">
+                            <label class="text-star text-danger fw-bold">Cambio: $ <span>0.00</span></label>
+                        </div>
 
                     </div>
                 </div>
