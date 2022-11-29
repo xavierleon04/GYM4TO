@@ -6,7 +6,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ClientesService {
   link = 'http://localhost:8080/api/v1/clientes/';
   constructor(private http: HttpClient) { }
-
+  public get(link: string) {
+    return this.http.get(link); //GET A LA API
+  }
   getCliente() {
     return this.cliente;
   }
@@ -20,6 +22,15 @@ export class ClientesService {
   remove(id: any) {
     return this.http.delete(`${this.link}${id}`);
   }
+
+  insertData(clientes: Clientes) {
+    return this.http.post<any>(`${this.link}`, clientes, {});
+  }
+
+  /*  putProducto(form: Clientes) {
+     let direccion = this.link + form.id;
+     return this.http.put<any>(direccion, form, {});
+   } */
 
   //eliminar clientes
   eliminarCliente(id: number) {
