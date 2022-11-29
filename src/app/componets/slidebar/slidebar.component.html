@@ -1,0 +1,114 @@
+
+ <!-- Main Sidebar Container -->
+ <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="../../index3.html" class="brand-link">
+      <i class="fa fa-dumbbell ml-2" ></i>
+      <span class="brand-text font-weight-light ml-2">Vikings Gym</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <i class="fa fa-user ml-2" ></i>
+        </div>
+        <div class="info">
+          <a href="#" class="d-block ml-2">Admin</a>
+          <a [routerLink]="['login']" class="d-block ml-2"><span class="small">Salir</span></a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Catalogo
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              
+              <li class="nav-item">
+                <a  [routerLink]="['empleados']" class="nav-link" style="cursor: pointer"  >
+                    <i class="fa fa-user"></i>
+                    <p class="ml-2">Empleados</p>
+                </a>
+              </li>
+            <li class="nav-item">
+                <a  [routerLink]="['tarifas']" class="nav-link" style="cursor: pointer">
+                  <i class="nav-icon fas fa-chart-pie"></i>
+                  <p class="ml-2">Tarifas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a  [routerLink]="['clientes']" class="nav-link" style="cursor: pointer">
+                  <i class="fa fa-users"></i>
+                  <p class="ml-2">Clientes</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a  class="nav-link" style="cursor: pointer">
+              <i class="fa fa-tags" aria-hidden="true"></i>
+              <p class="ml-2">Inventario</p>
+              <i class="right fas fa-angle-left"></i>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a  [routerLink]="['productos']" class="nav-link" style="cursor: pointer">
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                  <p class="ml-2">Productos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a  [routerLink]="['categorias']" class="nav-link" style="cursor: pointer">
+                  <i class="fa fa-bars" aria-hidden="true"></i>
+                  <p class="ml-2">Categorias</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="fa fa-shopping-cart"></i>
+              <p>
+                        Ventas
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a [routerLink]="['puntoventas']" class="nav-link">
+                  <i class="fa fa-cart-plus" aria-hidden="true"> </i>
+                  <p>Punto de Ventas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a [routerLink]="['ventas']" class="nav-link">
+                  <i class="fa fa-cart-plus" aria-hidden="true"> </i>
+                  <p>Ventas</p>
+                </a>
+              </li>
+              
+              
+            </ul>
+          </li>
+
+          
+          
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col">
+  
+    
+     
+      
+    <div class="form-row">
+      <div class="form-group col-md-6">
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="inputState">Selecciona</label>
+        <select id="inputState"   [(ngModel)]="selectedOption" class="form-control">
+          
+          <option [value]="1">Muebles</option>
+          <option [value]="2">Electrodomesticos</option>
+        </select>
+
+
+<hr>
+<hr>
+<hr>
+
+<div *ngIf="selectedOption==1">
+  <div class="card-columns">
+  <div class="card" *ngFor ="let muebles of muebles">
+    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{muebles.nombre}}</h5>
+      <p class="card-text">{{muebles.precio}}</p>
+      <a href="#" class="btn btn-primary"></a>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<hr>
+<div *ngIf="selectedOption==2">
+  <div class="card-columns">
+  <div class="card" *ngFor ="let electrodomesticos of electrodomesticos">
+    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{electrodomesticos.nombre}}</h5>
+      <p class="card-text">{{electrodomesticos.nombre}}</p>
+      <a href="#" class="btn btn-primary"></a>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+      
+
+
+
+
+

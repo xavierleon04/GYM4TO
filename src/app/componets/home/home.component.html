@@ -1,0 +1,162 @@
+<br>
+<section class="content">
+  <div class="container-fluid">
+<div class="row">
+  <div class="col-md-3 col-sm-6 col-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-info"><i class="far fa-calendar-alt"></i></span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">Visitas</span>
+        <span class="info-box-number">0</span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+  <!-- /.col -->
+  <div class="col-md-3 col-sm-6 col-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-success"><i class="fa fa-money">$</i></span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">Ingresos</span>
+        <span class="info-box-number">$0</span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+  <!-- /.col -->
+ 
+  <!-- /.col -->
+  <div class="col-md-3 col-sm-6 col-12">
+    <div class="info-box">
+      
+      <a class="btn btn-app" data-toggle="modal" data-target="#exampleModalCenter" (click)="!modal">
+        <i class="fas fa-barcode"></i> Entrada
+      </a>
+      <a class="btn btn-app" data-toggle="modal1" data-toggle="modal" data-target="#exampleModal" (click)="!modal">
+        <i class="fas fa-barcode"></i> Salida
+      </a>
+      
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+  <!-- /.col -->
+</div>
+</div>
+</section>
+<hr>
+
+<!--Modal Entrada-->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Nueva entrada</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input class="form-control" type="text" placeholder="Escanear codigo">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="re()" data-dismiss="modal" aria-label="Close">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal salida-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Nueva salida</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input class="form-control" type="text" placeholder="Escanear codigo">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="re()" data-dismiss="modal" aria-label="Close">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nueva salida</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input class="form-control" type="text" placeholder="Escanear codigo">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+
+
+
+
+
+<section class="content" *ngIf = "modal">
+  <div class="card card-solid" >
+    <div class="card-body pb-0">
+      <div class="row d-flex align-items-stretch" >
+        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch"  >
+            <div class="card bg-light" >
+            <div class="card-header text-muted border-bottom-0"  >
+            </div>
+            <div class="card-body pt-0" >
+              <div class="row" >
+                <div class="ribbon-wrapper">
+                  <div class="ribbon bg-success" >
+                    
+                  </div>
+                </div>
+                <div class="col-7">
+                  <h2 class="lead"><b>Juan Garcia Marquez</b></h2>
+                  <ul class="ml-4 mb-0 fa-ul text-muted">
+                    <br>
+                    <li class="small"><span class="fa-li"><i class="fa fa-phone" aria-hidden="true"></i></span> 271 1856095</li>
+                    <br>
+                    <li class="small"><span class="fa-li"><i class="fa fa-book" aria-hidden="true"></i></span> Suscripcion: Anul </li>
+                    <br>
+                    <li class="small"><span class="fa-li"><i class="fa fa-hourglass-end" aria-hidden="true"></i></span> Fin Suscripcion: 15/05/2023 </li>
+                  </ul>
+                </div>
+                <div class="col-5 text-center">
+                  <img src="assets/user/Juan.jpg" alt="" class="img-circle img-fluid">
+                </div>
+              </div>
+              
+            </div>
+            <!--<div class="card-footer">
+              <div class="text-right">
+                <a href="#" class="btn btn-sm btn-primary">
+                  <i class="fas fa-pencil-alt"></i> Editar
+                </a>
+              </div>
+            </div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- /.card-footer -->
+  </div>
+</section>

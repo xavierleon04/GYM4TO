@@ -1,0 +1,76 @@
+   
+   
+    <div class="container-fluid">
+        <section class="content-header">
+            <div class="row mb-2">
+            <div class="col-sm-6">
+             <h1>Inventario / Categorias</h1>
+            </div>
+            <div class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search" >
+                <button  class="btn btn-outline-success my-2 my-sm-0" type="button" >
+                  Buscar 
+                </button>
+              </div>
+            </div>
+        </section>
+        <hr>
+    <div class="card-body p-0">
+      <table class="table table-striped projects">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Cantidad Productos</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr>
+            <th scope="row">01</th>
+            <td>Suplementos</td>
+            <td>1</td>
+            
+          </tr>
+          
+        </tbody>
+      </table>
+    
+    </div>
+    </div>
+            <!--Modal de agregar-->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="popupContent">
+                            <div class="card card-warning">
+                                <div class="card-header">
+                                    <h3 class="card-title">Agregar Categoria</h3>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form role="form">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                         <label for="exampleInputEmail1">Categoria</label>
+                                         <input type="name" class="form-control" id="exampleInputEmail1" 
+                                         placeholder="Ingresar Nombre " required>
+                                        </div>
+                                     </div>
+                                    <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Boton-->
+            <div class="cajaf">
+                <a  class="btn_roundf" title="Imprimir" alt="impirmir" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-plus"></i></a>
+                <!--<button class="caja1" href="#" alt="contrato" title="Contrato" data-toggle="modal" data-target="#exampleModalCenter" ><i class="fa fa-flag"></i></button>
+                <a class="caja2" href="#" alt="comprobante" title="Comprobante"><i class="fa fa-print"></i></a>-->
+              </div>
+                <!--CBoton para agregar-->

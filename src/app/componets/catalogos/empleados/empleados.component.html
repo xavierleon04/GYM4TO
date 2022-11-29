@@ -1,0 +1,135 @@
+<body class="hold-transition sidebar-mini">
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+
+          <br>
+          <h1>Empleados</h1>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!--Boton para agregar Borrar ek url para que carge el icono -->
+  <div class="cajaf">
+    <a class="btn_roundf" title="Imprimir" alt="impirmir" data-toggle="modal" data-target=".bd-example-modal-lg"><i
+        class="fa fa-plus"></i></a>
+
+  </div>
+  <!--CBoton para agregar-->
+  <!-- Modal -->
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg ">
+
+      <div class="card card-success">
+        <div class="card-header">
+          <h3 class="card-title">Agregar cliente</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form role="form">
+          <div class="form-row">
+            <div class="form-group col-md-5">
+              <label class="mr" for="inputEmail4">Nombre</label>
+              <input type="text" class="form-control mr" id="inputEmail4" placeholder="Nombre(s)">
+            </div>
+            <div class="form-group col-md-5">
+              <label class="mr" for="inputPassword4">Apellido Paterno</label>
+              <input type="text" class="form-control mr" id="inputPassword4" placeholder="Apellido Paterno">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label class="mr" for="inputEmail4">Apellido Materno</label>
+              <input type="text" class="form-control mr" id="inputEmail4" placeholder="Apellido Materno">
+            </div>
+            <div class="form-group col-md-4">
+              <label class="mr" for="inputPassword4">Telefono</label>
+              <input type="text" class="form-control mr" id="inputPassword4" placeholder="Telefono">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-8">
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-primary btn-block">Guardar</button>
+              <br>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <!--Cuerpo de la tabla-->
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table">
+        <thead class=" ">
+          <th>
+            #
+          </th>
+          <th class="text-center">
+            Nombre
+          </th>
+          <th class="text-center">
+            Apellido Paterno
+          </th>
+          <th class="text-center">
+            Apellido Materno
+          </th>
+
+          <th class="text-center">
+            Teléfono
+          </th>
+
+          <th class="text-center">
+            Editar
+          </th>
+          <th class="text-center">
+            Eliminar
+          </th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of empleado; let index=index">
+            <th scope="row">{{index+1}}</th>
+            <td class="text-center">
+              {{user.nombre}}
+            </td>
+            <td class="text-center">
+              {{user.p_Apellido}}
+            </td>
+            <td class="text-center">
+              {{user.seg_Apellido}}
+            </td>
+            <td class="text-center">
+              {{user.telefono}}
+            </td>
+
+
+            <td class="text-center">
+              <button type="button" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i></button>
+            </td>
+            <td class="text-center">
+              <button type="button" class="btn btn-danger btn-sm" (click)="eliminar(user.id)"><i
+                  class="fa fa-trash"></i></button>
+
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+      <!--Aqui termina la tabla-->
+    </div>
+  </div>
+</body>
