@@ -33,7 +33,6 @@ export class EmpleadosComponent implements OnInit {
   termino: string = '';
   tari: boolean = false;
 
-
   constructor(
     private empleadoService: EmpleadosService,
     private serviceP: PuestosService,
@@ -41,7 +40,7 @@ export class EmpleadosComponent implements OnInit {
     private router: Router,
     private activateRoute: ActivatedRoute,
     private modalService: NgbModal
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.empleadoService.getEmplados()?.subscribe((request) => {
@@ -94,7 +93,6 @@ export class EmpleadosComponent implements OnInit {
       nombre: this.nombre,
       p_Apellido: this.p_Apellido,
       seg_Apellido: this.seg_Apellido,
-
     };
     this.empleadoService.agregar(use)?.subscribe((response) => {
       console.log(response);
@@ -111,7 +109,6 @@ export class EmpleadosComponent implements OnInit {
       nombre: this.nombre,
       p_Apellido: this.p_Apellido,
       seg_Apellido: this.seg_Apellido,
-
     };
     console.log(use, user);
     this.empleadoService.update(use)?.subscribe((response) => {
@@ -119,6 +116,8 @@ export class EmpleadosComponent implements OnInit {
     });
     this.clear();
     this.modalService.dismissAll();
+
+    window.location.reload();
 
     //window.location.reload();
   }
@@ -128,7 +127,6 @@ export class EmpleadosComponent implements OnInit {
     this.nombre = '';
     this.p_Apellido = '';
     this.seg_Apellido = '';
-
   }
 
   // funcion para eliminar un empleado
