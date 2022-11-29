@@ -18,6 +18,14 @@ export class TarifasService {
   remove(id: any) {
     return this.http.delete(`${environment.api}tarifas/${id}`);
   }
+  //agregar
+  agregar(data: any) {
+    try {
+      return this.http.post<any>(`${environment.api}tarifas/`, data, {});
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   //eliminar clientes
   eliminarCliente(id: number) {

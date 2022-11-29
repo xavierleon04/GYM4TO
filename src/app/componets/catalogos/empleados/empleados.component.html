@@ -8,69 +8,34 @@
           <h1>Empleados</h1>
 
         </div>
+        <!--Inicia buscador-->
 
+        <!--Termina buscador-->
       </div>
     </div>
   </section>
   <!--Boton para agregar Borrar ek url para que carge el icono -->
-  <div class="cajaf">
-    <a class="btn_roundf" title="Imprimir" alt="impirmir" data-toggle="modal" data-target=".bd-example-modal-lg"><i
-        class="fa fa-plus"></i></a>
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Agregar Empleado</button>
 
-  </div>
   <!--CBoton para agregar-->
   <!-- Modal -->
-  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg ">
 
-      <div class="card card-success">
-        <div class="card-header">
-          <h3 class="card-title">Agregar cliente</h3>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+
+  <div *ngIf="buscador">
+    <h1> Buscando:
+      <small>
+        {{termino}}
+      </small>
+    </h1>
+    <hr>
+    <div class="row animated fadeIn fast" *ngIf="payment.length == 0">
+      <div class="col-md-12">
+        <div class="alert alert-info" role="alert">
+          No existen resultados con el término: {{ termino }}
         </div>
-        <form role="form">
-          <div class="form-row">
-            <div class="form-group col-md-5">
-              <label class="mr" for="inputEmail4">Nombre</label>
-              <input type="text" class="form-control mr" id="inputEmail4" placeholder="Nombre(s)">
-            </div>
-            <div class="form-group col-md-5">
-              <label class="mr" for="inputPassword4">Apellido Paterno</label>
-              <input type="text" class="form-control mr" id="inputPassword4" placeholder="Apellido Paterno">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label class="mr" for="inputEmail4">Apellido Materno</label>
-              <input type="text" class="form-control mr" id="inputEmail4" placeholder="Apellido Materno">
-            </div>
-            <div class="form-group col-md-4">
-              <label class="mr" for="inputPassword4">Telefono</label>
-              <input type="text" class="form-control mr" id="inputPassword4" placeholder="Telefono">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-8">
-            </div>
-            <div class="col-md-3">
-              <button class="btn btn-primary btn-block">Guardar</button>
-              <br>
-            </div>
-          </div>
-        </form>
       </div>
     </div>
   </div>
-
-
-
-
-
-
   <!--Cuerpo de la tabla-->
   <div class="card-body">
     <div class="table-responsive">
@@ -88,16 +53,8 @@
           <th class="text-center">
             Apellido Materno
           </th>
-
           <th class="text-center">
-            Teléfono
-          </th>
-
-          <th class="text-center">
-            Editar
-          </th>
-          <th class="text-center">
-            Eliminar
+            Opciones
           </th>
         </thead>
         <tbody>
@@ -112,15 +69,11 @@
             <td class="text-center">
               {{user.seg_Apellido}}
             </td>
-            <td class="text-center">
-              {{user.telefono}}
-            </td>
-
 
             <td class="text-center">
-              <button type="button" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i></button>
-            </td>
-            <td class="text-center">
+              <button type="button" class="btn btn-info btn-sm" (click)="openUp(update, index)"><i
+                  class="fas fa-pencil-alt"></i></button>
+
               <button type="button" class="btn btn-danger btn-sm" (click)="eliminar(user.id)"><i
                   class="fa fa-trash"></i></button>
 
@@ -129,7 +82,89 @@
 
         </tbody>
       </table>
-      <!--Aqui termina la tabla-->
     </div>
   </div>
+
+  <!--Modal Agregar-->
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Agregar</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="Nombre">Nombre</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="nombre" name="nombre">
+              <small>{{nombre}}</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="ApellidoPaterno">Apellido Paterno</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="p_Apellido" name="Apellido_paterno">
+              <small>{{ p_Apellido }}</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="ApellidoMaterno">Apellido Materno</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="seg_Apellido"
+                name="Apellido_materno">
+              <small>{{ seg_Apellido }}</small>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="crearU()">Añadir</button>
+    </div>
+  </ng-template>
+
+  <!--Modal Editar-->
+  <ng-template #update let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Editar</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="Nombre">Nombre</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="nombre" name="nombre"
+                value="{{empleado[index].nombre}}">
+              <small>{{nombre}}</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="ApellidoPaterno">Apellido Paterno</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="p_Apellido" name="Apellido_paterno"
+                value="{{empleado[index].p_Paterno}}">
+              <small>{{ p_Apellido }}</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="ApellidoMaterno">Apellido Materno</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="seg_Apellido" name="Apellido_materno"
+                value="{{empleado[index].seg_apellido}}">
+              <small>{{ seg_Apellido }}</small>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark"
+        (click)="updateU(empleado[index].id, empleado[index] )">Guardar</button>
+    </div>
+  </ng-template>
 </body>

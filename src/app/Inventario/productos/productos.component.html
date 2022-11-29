@@ -5,72 +5,40 @@
         <div class="col-sm-6">
 
           <br>
-          <h1>Productos</h1>
+          <h1>Clientes</h1>
 
         </div>
+        <!--Inicia buscador-->
 
+        <!--Termina buscador-->
       </div>
     </div>
   </section>
   <!--Boton para agregar Borrar ek url para que carge el icono -->
-  <div class="cajaf">
-    <a class="btn_roundf" title="Imprimir" alt="impirmir" data-toggle="modal" data-target=".bd-example-modal-lg"><i
-        class="fa fa-plus"></i></a>
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Agregar Cliente</button>
 
-  </div>
   <!--CBoton para agregar-->
   <!-- Modal -->
-  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg ">
 
-      <div class="card card-success">
-        <div class="card-header">
-          <h3 class="card-title">Agregar cliente</h3>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+
+
+
+
+  <div *ngIf="buscador">
+    <h1> Buscando:
+      <small>
+        {{termino}}
+      </small>
+    </h1>
+    <hr>
+    <div class="row animated fadeIn fast" *ngIf="payment.length == 0">
+      <div class="col-md-12">
+        <div class="alert alert-info" role="alert">
+          No existen resultados con el término: {{ termino }}
         </div>
-        <form role="form">
-          <div class="form-row">
-            <div class="form-group col-md-5">
-              <label class="mr" for="inputEmail4">Nombre</label>
-              <input type="text" class="form-control mr" id="inputEmail4" placeholder="Nombre(s)">
-            </div>
-            <div class="form-group col-md-5">
-              <label class="mr" for="inputPassword4">Apellido Paterno</label>
-              <input type="text" class="form-control mr" id="inputPassword4" placeholder="Apellido Paterno">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label class="mr" for="inputEmail4">Apellido Materno</label>
-              <input type="text" class="form-control mr" id="inputEmail4" placeholder="Apellido Materno">
-            </div>
-            <div class="form-group col-md-4">
-              <label class="mr" for="inputPassword4">Telefono</label>
-              <input type="text" class="form-control mr" id="inputPassword4" placeholder="Telefono">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-8">
-            </div>
-            <div class="col-md-3">
-              <button class="btn btn-primary btn-block">Guardar</button>
-              <br>
-            </div>
-          </div>
-        </form>
       </div>
     </div>
   </div>
-
-
-
-
-
-
   <!--Cuerpo de la tabla-->
   <div class="card-body">
     <div class="table-responsive">
@@ -83,14 +51,14 @@
             Nombre
           </th>
           <th class="text-center">
-            Categoria
+            Apellido Paterno
           </th>
           <th class="text-center">
-            Existencia
+            Apellido Materno
           </th>
 
           <th class="text-center">
-            Precio Compra
+            Teléfono
           </th>
 
           <th class="text-center">
@@ -101,7 +69,7 @@
           </th>
         </thead>
         <tbody>
-          <tr *ngFor="let user of productos; let index=index">
+          <tr *ngFor="let user of payment; let index=index">
             <th scope="row">{{index+1}}</th>
             <td class="text-center">
               {{user.nombre}}
@@ -110,26 +78,138 @@
               {{user.categoria}}
             </td>
             <td class="text-center">
-              {{user.existencia}}
-            </td>
-            <td class="text-center">
               {{user.p_Compra}}
             </td>
+            <td class="text-center">
+              {{user.existencia}}
+            </td>
 
 
             <td class="text-center">
-              <button type="button" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i></button>
+              <button type="button" class="btn btn-info btn-sm" (click)="openUp(update, index)"><i
+                  class="fas fa-pencil-alt"></i></button>
             </td>
             <td class="text-center">
-                <button type="button" class="btn btn-danger btn-sm" (click)="eliminar(user.id)"><i
-                  class="fa fa-trash"></i></button>  
+              <button type="button" class="btn btn-danger btn-sm" (click)="eliminar(user.id)"><i
+                  class="fa fa-trash"></i></button>
 
             </td>
           </tr>
 
         </tbody>
       </table>
-      <!--Aqui termina la tabla-->
     </div>
   </div>
+
+  <!--Modal Agregar-->
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Agregar</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="Nombre">Nombre</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="nombre" name="nombre">
+              <small>{{nombre}}</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="ApellidoPaterno">Categoria</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="categoria" name="Apellido_paterno">
+              <small>{{ categoria }}</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="ApellidoMaterno">Precio Compra</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="p_Compra"
+                name="Apellido_materno">
+              <small>{{ p_Compra }}</small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group">
+              <label for="CorreoElectronico">Existencia</label>
+              <input type="text" maxlength="500" class="form-control" [(ngModel)]="existencia" name="Telefono">
+              <small>{{ existencia }}</small>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="crearU()">Añadir</button>
+    </div>
+  </ng-template>
+
+  <!--Modal Editar-->
+  <ng-template #update let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Editar</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="ID">id</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="index" name="id"
+                value="{{payment[index].id}}">
+              <small>{{index}}</small>
+            </div>
+          </div>
+
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="Nombre">Nombre</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="nombre" name="nombre"
+                value="{{payment[index].nombre}}">
+              <small>{{nombre}}</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="ApellidoPaterno">Categoria</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="categoria" name="Apellido_paterno"
+                value="{{payment[index].p_Paterno}}">
+              <small>{{ categoria }}</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="ApellidoMaterno">Precio Compra</label>
+              <input type="text" maxlength="100" class="form-control" [(ngModel)]="p_Compra" name="Apellido_materno"
+                value="{{payment[index].seg_apellido}}">
+              <small>{{ p_Compra }}</small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group">
+              <label for="CorreoElectronico">Existencia</label>
+              <input type="text" maxlength="500" class="form-control" [(ngModel)]="existencia" name="Telefono"
+                value="{{payment[index].telefono}}">
+              <small>{{ existencia }}</small>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark"
+        (click)="updateU(payment[index].id, payment[index] )">Save</button>
+    </div>
+  </ng-template>
 </body>

@@ -174,8 +174,7 @@ export class ClientesComponent implements OnInit {
     });
     this.clear();
     this.modalService.dismissAll();
-
-    //window.location.reload();
+    window.location.reload();
   }
 
   // limpiar las variables
